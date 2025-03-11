@@ -1,0 +1,3 @@
+No Swing, temos um mecanismo listener, que em resumo, é uma espécie de escutador de eventos. Através dele conseguimos interpretar
+eventos como cliques com o mouse, teclas pressionadas etc. O listener funciona como um observador, isto é, aguarda a execução de um
+evento para executar uma ação.

@@ -1,0 +1,9 @@
+Encapsulamento: Trata-se de uma técnica da programação que garante a proteção dos dados de um objeto e esconde os
+detalhes internos dele. O encapsulamento é o que permite que o objeto seja acessado e modificado apenas por meio
+de métodos específicos.
+
+Abstração: Este termo é utilizado para definirmos entidades que existem no mundo real. Sendo onde são criadas as nossas classes.
+Essas entidades são consideradas tudo que é real, considerando suas características e ações.
+
+Modularidade: Técnica muito difundida na Programação Orientada a Objeto. Essa abrodagem é o que nos facilita na manutenção
+e a compreeensão do código, uma vez que cada módulo é responsável por uma funcionalidade específica do programa.

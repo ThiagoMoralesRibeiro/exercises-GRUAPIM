@@ -1,0 +1,11 @@
+1. sleep
+
+O método sleep é usado para fazer uma thread dormir ou pausar por um determinado período de tempo. 
+Durante esse tempo, a thread fica inativa, mas o controle do processo não é entregue a outras threads, ou seja, 
+a thread não faz nada e não consome recursos de CPU.
+
+2. join
+
+O método join() é usado para aguardar a conclusão de outra thread antes que a thread atual continue sua execução. 
+Ou seja, quando uma thread chama join em outra thread, 
+ela espera a execução dessa thread terminar para continuar, isto é, ocorre o consumo de recurso.

@@ -1,0 +1,18 @@
+O modificador synchronized em Java é utilizado para garantir que apenas uma thread por vez possa acessar um determinado bloco de código ou método. 
+Ele é fundamental para evitar condições de corrida (race conditions), 
+em que múltiplas threads tentam acessar e modificar dados compartilhados de maneira simultânea, o que pode causar comportamentos indesejados e inconsistentes.
+
+Quando utilizar o modificador synchronized:
+- Acessando dados compartilhados;
+- Manipulação de recursos compartilhados;
+- Para aevitar as race conditions;
+
+//Neste caso, somente uma thread vai acessar este bloco
+public synchronized void metodoSincronizado() {
+    // código protegido contra concorrência
+}
+
+Por que não utilizar sempre o synchronized:
+- Desempenho: Pode afetar negativamente o desempenho do programa, pois acaba introduzindo bloqueio e esperas, já que evita a concorrencia;
+- Casos em que threads ficam parados por tempo indefinido, prejudicando na liberação de recursos para o resto do programa;
+- Granularidade de sync: Pode diminuir a eficiência se for feito o uso excessivo.

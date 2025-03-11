@@ -1,0 +1,5 @@
+Em java, tanto as classes de Erro (Error) e as exceções (Exception) são subclasses da classe Throwable, ou seja ela é a superclasse
+responsável por estas duas. Apenas objetos que instaciam esta classe são jogados pela JVM ou podem ser lançados pelo statement Java throw.
+Quanto a Exception, representa problemas previsíveis que podem ser tratados pelo programa, já o Error, representa falhas graves do sistema,
+as quais geralmente não podem ser tratadas. Apesar de parecerem semelhantes, são distintas e devem ser utilizadas em ocasiões diferentes.
+
