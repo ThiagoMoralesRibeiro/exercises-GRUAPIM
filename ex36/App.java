@@ -18,7 +18,7 @@ class Primo extends Thread {
 
   @Override
   public void run() {
-    for (int i = start; i <= end; i++) { 
+    for (int i = start; i <= end; i++) {
       if (isPrimo(i)) {
         count++;
       }
@@ -30,8 +30,7 @@ class Primo extends Thread {
       return false;
     }
 
-    
-    for (int i = 2; i <= Math.sqrt(number); i++) { 
+    for (int i = 2; i <= Math.sqrt(number); i++) {
       if (number % i == 0) {
         return false;
       }
@@ -47,26 +46,22 @@ public class App {
     System.out.print("Informe o número n: ");
     int n = scanner.nextInt();
 
-    // Dividindo o trabalho entre duas threads
     int half = n / 2;
 
-    // Criação das threads
     Primo thread1 = new Primo(0, half);
     Primo thread2 = new Primo(half + 1, n);
 
-    // Inicia as threads
     thread1.start();
     thread2.start();
 
     try {
-      // Aguarda as threads terminarem
+
       thread1.join();
       thread2.join();
-    } catch (InterruptedException e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
 
-    // Soma os resultados das duas threads
     int totalPrimo = thread1.getCount() + thread2.getCount();
 
     System.out.println("Quantidade de números primos entre 0 e " + n + ": " + totalPrimo);
