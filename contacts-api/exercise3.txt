@@ -1,0 +1,91 @@
+1 - Qual a principal diferença entre REST e SOAP?
+SOAP costuma ser um protocolo mais estruturado, enquanto o REST acaba sendo mais flexível. A principal
+diferença está na forma com que eles estruturam a comunicação entre os sistemas.
+
+2 - Em quais cenários SOAP ainda é utilizado?
+Melhor para transações seguras e complexas, como sistemas bancários e governamentais.
+
+3 - Quais são as vantagens e desvantagens de usar REST ao invés de SOAP? 
+Vantagens:
+  Mais simples e leve: REST usa http puro enquanto o SOAP se limita ao XML estruturado.
+  Formato flexível: REST permite o uso de XML, JSON, texto etc.
+  Desempenho superior: Exige menos banda, pois não possui os grandes cabeçalhos que nem o SOAP.
+  Velocidade: APIs REST costumam ser mais eficientes, pois JSON é menor e mais eficiente do que XML.
+  Stateless: Cada requisição é independente, o que facilita na hora de escalar.
+
+Desvantagens:
+  Segurança: REST não é tão seguro se comparado ao SOAP que possui o WS-Security, que é bem mais seguro e robusto em criptografia.
+  Falta de padronização: SOAP tem um WSDL (Web Service Description Language) para documentar serviços, REST não tem um padrão fixo.
+  Pouco suporte para transações mais complexas: SOAP é melhor para operações críticas, como sistemas bancários e governamentais.
+
+4 - O que é WS-Security e como ele se compara à segurança em APIs REST? 
+É um padrão que adiciona segurança às mensagens do SOAP. Ele protege a integridade e confidencialidade das mensagens, 
+além de associar solicitações de segurança às mensagens. O WS-Security usa criptografia XML e assinatura digital XML para proteger as mensagens SOAP.
+O REST alcança uma comunicação segura utilizando HTTPS para criptografar dados que estão sendo transmitidos entre um cliente e um servidor.
+Isso é obtido usando SSL ou TLS. O processo de segurança quando um cliente faz uma solicitação para serviços RESTful usando HTTPs começa iniciando uma conexão segura enviando uma solicitação ao servidor usando HTTPS.
+
+5 - Explique o modelo de maturidade de Richardson.
+O Modelo de Maturidade de Richardson (ou Richardson Maturity Model - RMM) avalia o nível de maturidade de uma API REST com base em como ela utiliza os princípios fundamentais da arquitetura REST.
+Para entender este modelo de maturidade, utilizarei o exemplo de uma pizzaria online e suas evoluções.
+
+Nível 0 - APIs Monolíticas (O Mundo das Antigas Pizzarias)
+
+Imagine uma pizzaria que só aceita pedidos por telefone. 
+Você liga, fala tudo de uma vez (endereço, sabores, forma de pagamento), e torce para que anotem certo. 
+Se precisar mudar algo, tem que ligar de novo e repetir tudo.
+
+Nas APIs:
+
+  Tudo é enviado por um único endpoint (/pedido).
+  O método HTTP (GET, POST, etc.) não importa.
+  O servidor entende tudo baseado no conteúdo da requisição, sem organização.
+
+
+Nível 1 - Recursos Separados (Menu Organizado)
+
+Agora, a pizzaria evoluiu e tem um menu online. Em vez de falar tudo de uma vez, você pode pedir separadamente:
+
+  /pizzas → Ver os sabores.
+  /bebidas → Ver opções de bebidas.
+  /pedidos → Criar um novo pedido.
+
+Nas APIs:
+
+  Começamos a separar os recursos (pizzas, bebidas, pedidos).
+  Mas ainda não usamos os verbos HTTP corretamente.
+
+
+Nível 2 - Verbos HTTP (Pedido Inteligente)
+
+Agora, a pizzaria permite que você faça pedidos de forma mais organizada, usando verbos diferentes:
+
+  GET /pizzas → Ver os sabores disponíveis.
+  POST /pedidos → Criar um novo pedido.
+  PUT /pedidos/123 → Atualizar um pedido existente.
+  DELETE /pedidos/123 → Cancelar um pedido.
+
+Nas APIs:
+
+  Agora usamos os verbos HTTP corretamente.
+  Cada operação tem um propósito claro.
+
+
+Nível 3 - HATEOAS (A Experiência Completa)
+
+Agora a pizzaria tem um sistema interativo que te guia:
+
+  Você pode ver um pedido e ele te sugere ações ("Editar", "Cancelar", "Pagar").
+  Se você vê uma pizza, pode clicar direto para adicionar ao carrinho.
+  O sistema te mostra o que fazer a seguir, sem precisar de instruções extras.
+
+Nas APIs:
+
+  As respostas da API incluem links para ações relacionadas.
+  Isso ajuda o cliente a navegar sem precisar saber todas as regras de antemão.
+
+
+6 - O que é GraphQL? Pesquisa e relacione com os conceitos vistos em aula.
+GraphQL é uma linguagem de consulta criada pelo Facebook em 2012 e lançada publicamente em 2015.
+É considerada uma alternativa para arquiteturas REST, além de oferecer um serviço runtime para rodar comandos e consumir uma API.
+
+
