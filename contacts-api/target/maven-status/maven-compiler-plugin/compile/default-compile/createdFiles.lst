@@ -1,0 +1,4 @@
+br/ifsp/contacts/repository/ContactRepository.class
+br/ifsp/contacts/model/Contact.class
+br/ifsp/contacts/ContactsApplication.class
+br/ifsp/contacts/controller/ContactController.class
