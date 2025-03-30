@@ -1,7 +1,9 @@
 package br.ifsp.contacts.controller;
 
+import br.ifsp.contacts.model.Address;
 import br.ifsp.contacts.model.Contact;
 import br.ifsp.contacts.repository.ContactRepository;
+import jakarta.validation.Valid;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +67,11 @@ public class ContactController {
     return contactRepository.getContactByName(name);
   }
 
+  @GetMapping("{id}/address")
+  public List<Address> getContactWithAddress(@PathVariable Long id) {
+    return contactRepository.findAddressesByContactId(id);
+  }
+
   /**
    * Método para criar um novo contato.
    * 
@@ -73,7 +80,7 @@ public class ContactController {
    *              com os dados JSON enviados no corpo da requisição.
    */
   @PostMapping
-  public Contact createContact(@RequestBody Contact contact) {
+  public Contact createContact(@Valid @RequestBody Contact contact) {
     return contactRepository.save(contact);
   }
 

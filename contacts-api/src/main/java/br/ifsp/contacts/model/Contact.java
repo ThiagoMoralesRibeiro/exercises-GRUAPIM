@@ -1,18 +1,39 @@
 package br.ifsp.contacts.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//import org.antlr.v4.runtime.misc.NotNull;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Contact {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @NotNull(message = "Name cannot be null")
+  @NotBlank(message = "Name is required")
   private String name;
-  private String phone;
+  @NotBlank(message = "Phone number is required")
+  @Size(min = 8, max = 15, message = "Phone number must be between 8 and 15 characters")
+  private String phone;  
+  @Email(message = "Email should be valid")
   private String email;
+  @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)  
+  private List<Address> addresses;
 
   public Contact() {
   }
@@ -21,6 +42,7 @@ public class Contact {
     this.name = name;
     this.phone = phone;
     this.email = email;
+    this.addresses = new ArrayList<>();
   }
 
   // Getters e Setters
@@ -50,6 +72,10 @@ public class Contact {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public List<Address> getAddresses(){
+    return addresses;
   }
 
 }
