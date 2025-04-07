@@ -2,6 +2,7 @@ package br.ifsp.contacts.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import br.ifsp.contacts.dto.ContactDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

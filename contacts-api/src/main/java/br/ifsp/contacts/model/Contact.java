@@ -3,6 +3,8 @@ package br.ifsp.contacts.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 //import org.antlr.v4.runtime.misc.NotNull;
 
 import jakarta.persistence.CascadeType;
@@ -16,6 +18,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -29,10 +32,12 @@ public class Contact {
   private String name;
   @NotBlank(message = "Phone number is required")
   @Size(min = 8, max = 15, message = "Phone number must be between 8 and 15 characters")
-  private String phone;  
+  private String phone;
   @Email(message = "Email should be valid")
   private String email;
-  @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)  
+  @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @JsonManagedReference
+  @NotEmpty(message = "O contato deve ter pelo menos um endereço")
   private List<Address> addresses;
 
   public Contact() {
@@ -74,8 +79,21 @@ public class Contact {
     this.email = email;
   }
 
-  public List<Address> getAddresses(){
+  public List<Address> getAddresses() {
     return addresses;
+  }
+
+  public void setAddresses(List<Address> addresses) {
+    if (addresses != null) {
+      addresses.forEach(address -> address.setContact(this));
+
+      if (this.addresses == null) {
+        this.addresses = new ArrayList<>();
+      }
+
+      this.addresses.clear();
+      this.addresses.addAll(addresses);
+    }
   }
 
 }
