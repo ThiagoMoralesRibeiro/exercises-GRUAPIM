@@ -20,7 +20,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
-      - "8083:80" # <- Aqui mapeia a porta externa 8082 para a interna 80
+      - "8083:80" # <- Aqui mapeia a porta externa 8083 para a interna 80. Pode utilizar a 8081, é que a minha estava ocupada e não queria pausar o container
     depends_on:
       - postgres
 
